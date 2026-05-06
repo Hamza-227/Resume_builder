@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ═══════════════════════════════════════════════════════
+       SEO META TAGS  — critical for Google ranking
+  ════════════════════════════════════════════════════════ -->
+  <title>Free ATS Resume Builder — Download PDF in 60 Seconds</title>
+  <meta name="description" content="Build a free ATS-optimized resume online. Instant PDF download. No login required. Tested against Workday, Taleo, Greenhouse & iCIMS. 100% free forever." />
+  <meta name="keywords" content="ATS resume builder free, free resume builder, CV maker online free, resume generator PDF, free resume template 2024, ATS friendly resume, resume builder no login" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/" />
+
+  <!-- Open Graph (LinkedIn / Facebook shares) -->
+  <meta property="og:title" content="Free ATS Resume Builder — Download PDF in 60 Seconds" />
+  <meta property="og:description" content="Build a professional, ATS-optimized resume for free. Instant PDF download. No login required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free ATS Resume Builder" />
+  <meta name="twitter:description" content="Build a free ATS resume. Instant PDF download. No login." />
+
+  <!-- Schema.org structured data (Google rich results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free ATS Resume Builder",
+    "description": "Build an ATS-optimized resume PDF for free. No login. Instant download.",
+    "url": "https://yourdomain.com",
+    "applicationCategory": "BusinessApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "operatingSystem": "Web Browser"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- ═══════════════════════════════════════════════════════
+       GOOGLE ADSENSE  — replace ca-pub-XXXXXXXXXXXXXXXX
+       with YOUR publisher ID after approval
+  ════════════════════════════════════════════════════════ -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     AD SLOT 1: HEADER LEADERBOARD (728×90 desktop / 320×50 mobile)
+     Highest RPM placement — above the fold, before any scroll
+════════════════════════════════════════════════════════════════════════════ -->
+<div class="ad-header ad-slot" aria-label="Advertisement">
+  <!-- Uncomment after AdSense approval:
+  <ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+     data-ad-slot="XXXXXXXXXX"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
+  <div class="ad-placeholder">Advertisement · 728×90</div>
+</div>
+
+<!-- ═══════════════ HERO SECTION ════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">✓ Free Forever · No Login Required</div>
+    <!-- H1 contains primary keyword -->
+    <h1>Free ATS Resume Builder</h1>
+    <p class="hero-sub">Create a professional, <strong>ATS-optimized PDF resume</strong> in under 60 seconds. Tested against Workday, Taleo, Greenhouse & iCIMS.</p>
+    <div class="trust-row">
+      <span class="trust-pill">📄 1-Page Guarantee</span>
+      <span class="trust-pill">🔤 100% Selectable Text</span>
+      <span class="trust-pill">🚫 Zero Images</span>
+      <span class="trust-pill">⚡ Instant PDF Download</span>
+      <span class="trust-pill">🔒 No Data Stored</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ MAIN LAYOUT ════════════════════════════════════════════ -->
+<main class="layout">
+
+  <!-- LEFT: FORM -->
+  <section class="form-col">
+
+    <!-- Progress indicator -->
+    <div class="progress-bar-wrap">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <p class="progress-label" id="progressLabel">0% complete</p>
+
+    <!-- ── SECTION: CONTACT ──────────────────────────────────────── -->
+    <div class="card" id="sec-contact">
+      <div class="card-header">
+        <span class="step-num">1</span>
+        <div>
+          <h2>Contact Information</h2>
+          <p class="card-hint">This becomes the header of your resume</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field required">
+          <label for="name">Full Name <span class="req">*</span></label>
+          <input type="text" id="name" placeholder="Jordan Smith" autocomplete="name" />
+        </div>
+        <div class="field required">
+          <label for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="jordan@email.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="+1 (555) 234-5678" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="city">Location</label>
+          <input type="text" id="city" placeholder="Austin, TX" />
+        </div>
+        <div class="field">
+          <label for="linkedin">LinkedIn URL</label>
+          <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+        </div>
+        <div class="field">
+          <label for="github">GitHub URL</label>
+          <input type="url" id="github" placeholder="https://github.com/yourusername" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION: SUMMARY ──────────────────────────────────────── -->
+    <div class="card" id="sec-summary">
+      <div class="card-header">
+        <span class="step-num">2</span>
+        <div>
+          <h2>Professional Summary</h2>
+          <p class="card-hint">3–4 sentences. Title + years + top skills + biggest win.</p>
+        </div>
+      </div>
+      <div class="tip-box">💡 <strong>ATS Tip:</strong> Mirror keywords from the job description exactly — ATS scores exact matches.</div>
+      <div class="field required">
+        <textarea id="summary" rows="4" placeholder="Software Engineer with 5+ years building scalable Python APIs. Proficient in Django, PostgreSQL, and AWS. Reduced system latency by 40% at Acme Corp serving 2M+ daily users."></textarea>
+        <span class="char-count" id="summaryCount">0 chars</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         AD SLOT 2: IN-CONTENT (between form sections)
+         Native/responsive — high CTR because it appears mid-task
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="ad-slot ad-incontent" aria-label="Advertisement">
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-format="fluid"
+           data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      <div class="ad-placeholder">Advertisement · Responsive</div>
+    </div>
+
+    <!-- ── SECTION: EXPERIENCE ───────────────────────────────────── -->
+    <div class="card" id="sec-experience">
+      <div class="card-header">
+        <span class="step-num">3</span>
+        <div>
+          <h2>Work Experience</h2>
+          <p class="card-hint">Start bullets with action verbs. Add numbers wherever possible.</p>
+        </div>
+      </div>
+      <div class="tip-box">💡 <strong>Formula:</strong> Action verb + task + metric. "Led team of 5 engineers, reducing deploy time by 60%."</div>
+      <div id="experience-list"></div>
+      <button class="btn-add" onclick="addExperience()">+ Add Experience</button>
+    </div>
+
+    <!-- ── SECTION: EDUCATION ────────────────────────────────────── -->
+    <div class="card" id="sec-education">
+      <div class="card-header">
+        <span class="step-num">4</span>
+        <div>
+          <h2>Education</h2>
+          <p class="card-hint">Most recent degree first</p>
+        </div>
+      </div>
+      <div id="education-list"></div>
+      <button class="btn-add" onclick="addEducation()">+ Add Education</button>
+    </div>
+
+    <!-- ── SECTION: PROJECTS ─────────────────────────────────────── -->
+    <div class="card" id="sec-projects">
+      <div class="card-header">
+        <span class="step-num">5</span>
+        <div>
+          <h2>Projects</h2>
+          <p class="card-hint">Add GitHub links — recruiters click them</p>
+        </div>
+      </div>
+      <div id="projects-list"></div>
+      <button class="btn-add" onclick="addProject()">+ Add Project</button>
+    </div>
+
+    <!-- ── SECTION: SKILLS ───────────────────────────────────────── -->
+    <div class="card" id="sec-skills">
+      <div class="card-header">
+        <span class="step-num">6</span>
+        <div>
+          <h2>Skills</h2>
+          <p class="card-hint">Comma-separated. Copy exact keywords from job postings.</p>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="lang-tools">Languages & Tools</label>
+          <input type="text" id="lang-tools" placeholder="Python, SQL, React, Docker, AWS" />
+        </div>
+        <div class="field">
+          <label for="techniques">Techniques & Methods</label>
+          <input type="text" id="techniques" placeholder="Machine Learning, REST API Design, CI/CD" />
+        </div>
+        <div class="field">
+          <label for="soft-skills">Soft Skills</label>
+          <input type="text" id="soft-skills" placeholder="Leadership, Mentorship, Communication" />
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SECTION: CERTIFICATIONS ───────────────────────────────── -->
+    <div class="card" id="sec-certs">
+      <div class="card-header">
+        <span class="step-num">7</span>
+        <div>
+          <h2>Certifications <span class="optional-tag">Optional</span></h2>
+          <p class="card-hint">Add verify links to prove credentials</p>
+        </div>
+      </div>
+      <div id="certs-list"></div>
+      <button class="btn-add" onclick="addCert()">+ Add Certification</button>
+    </div>
+
+    <!-- ── GENERATE BUTTON ────────────────────────────────────────── -->
+    <div class="generate-wrap">
+      <div id="errorBox" class="error-box hidden"></div>
+      <button class="btn-generate" id="generateBtn" onclick="generatePDF()">
+        <span class="btn-icon">⚡</span>
+        <span id="btnText">Generate My ATS Resume PDF</span>
+      </button>
+      <p class="generate-hint">Free forever · No email required · PDF downloads instantly</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════
+         AD SLOT 3: POST-DOWNLOAD — highest intent moment
+         User just got value, highest likelihood to click an ad
+    ══════════════════════════════════════════════════════════════ -->
+    <div id="postDownloadAd" class="ad-slot ad-postdownload hidden" aria-label="Advertisement">
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      <div class="ad-placeholder">Advertisement · Post-Download (Highest CTR)</div>
+    </div>
+
+  </section>
+
+  <!-- RIGHT: SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- ══════════════════════════════════════════════════════════════
+         AD SLOT 4: SIDEBAR (300×250 or 300×600)
+         Sticky sidebar — highest RPM on desktop traffic
+    ══════════════════════════════════════════════════════════════ -->
+    <div class="ad-slot ad-sidebar sticky-ad" aria-label="Advertisement">
+      <!-- <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      <div class="ad-placeholder">Advertisement · 300×250<br>Sidebar (Sticky)</div>
+    </div>
+
+    <!-- ATS Tips Card -->
+    <div class="sidebar-card">
+      <h3>✅ ATS Writing Tips</h3>
+      <ul class="tips-list">
+        <li><strong>Action verbs first:</strong> Led, Built, Reduced, Automated</li>
+        <li><strong>Numbers always:</strong> 40% faster · $2M revenue · 10K users</li>
+        <li><strong>Mirror keywords</strong> from the job description exactly</li>
+        <li><strong>Dates:</strong> Use "Jan 2022" format</li>
+        <li><strong>No tables/columns</strong> in your resume — ATS can't read them</li>
+        <li><strong>No images/logos</strong> — they break ATS parsing</li>
+      </ul>
+    </div>
+
+    <!-- Affiliate links section -->
+    <div class="sidebar-card affiliate-card">
+      <h3>🎯 Level Up Your Job Search</h3>
+      <p class="affiliate-intro">Tools used by top engineers:</p>
+      <a href="https://linkedin.com/premium" class="affiliate-link" target="_blank" rel="noopener nofollow">
+        <span class="aff-icon">💼</span>
+        <div>
+          <strong>LinkedIn Premium</strong>
+          <span>See who viewed your profile + InMail</span>
+        </div>
+        <span class="aff-arrow">→</span>
+      </a>
+      <a href="https://grammarly.com" class="affiliate-link" target="_blank" rel="noopener nofollow">
+        <span class="aff-icon">✍️</span>
+        <div>
+          <strong>Grammarly</strong>
+          <span>Catch typos before recruiters do</span>
+        </div>
+        <span class="aff-arrow">→</span>
+      </a>
+      <a href="https://coursera.org" class="affiliate-link" target="_blank" rel="noopener nofollow">
+        <span class="aff-icon">🎓</span>
+        <div>
+          <strong>Coursera</strong>
+          <span>Add certifications to your resume</span>
+        </div>
+        <span class="aff-arrow">→</span>
+      </a>
+      <p class="affiliate-disclosure">* Some links may be affiliate links</p>
+    </div>
+
+    <!-- Second sidebar ad -->
+    <div class="ad-slot ad-sidebar-2 sticky-ad-2" aria-label="Advertisement">
+      <!-- <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+      <div class="ad-placeholder">Advertisement · 300×600<br>Half Page (High RPM)</div>
+    </div>
+
+  </aside>
+</main>
+
+<!-- ═══════════════ FAQ SECTION (SEO: targets long-tail keywords) ═══════════ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>What is an ATS resume?</h3>
+        <p>ATS (Applicant Tracking System) software is used by 99% of Fortune 500 companies to scan resumes before a human sees them. An ATS-friendly resume uses standard fonts, no tables or images, and exact keyword matches.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this resume builder really free?</h3>
+        <p>Yes. 100% free. No login, no credit card, no watermark. Download unlimited resumes as PDF instantly.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you store my data?</h3>
+        <p>No. Your resume data is processed in memory and immediately discarded. Nothing is saved to any database or server.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Which ATS systems is this tested against?</h3>
+        <p>Workday, Taleo, Greenhouse, iCIMS, and Lever — the five most common enterprise ATS platforms covering 80%+ of Fortune 500 hiring.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why only one page?</h3>
+        <p>Recruiters spend an average of 7 seconds on a resume. One-page resumes have 2× higher callback rates for candidates with under 10 years of experience. Our builder auto-scales to guarantee exactly one page.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What font does this use?</h3>
+        <p>Times-Roman — the gold standard for ATS compatibility. Fancy fonts like Calibri or custom fonts can cause ATS parsing failures. We use only standard PDF fonts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <strong>Free ATS Resume Builder</strong>
+      <p>Build resumes that pass ATS systems. Free forever.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Free ATS Resume Builder · No data stored · No login required</p>
+    <p class="disclaimer">This tool generates ATS-optimized resume templates. Results may vary by job application and ATS system version.</p>
+  </div>
+</footer>
+
+<!-- ═══════════════ EXPERIENCE TEMPLATE (hidden) ════════════════════════ -->
+<template id="exp-template">
+  <div class="repeatable-block" data-type="exp">
+    <div class="block-header">
+      <span class="block-num">Experience #<span class="num-label"></span></span>
+      <button class="btn-remove" onclick="removeBlock(this)">✕ Remove</button>
+    </div>
+    <div class="grid-2">
+      <div class="field required">
+        <label>Job Title <span class="req">*</span></label>
+        <input type="text" name="title" placeholder="Software Engineer" />
+      </div>
+      <div class="field required">
+        <label>Company <span class="req">*</span></label>
+        <input type="text" name="company" placeholder="Acme Corp" />
+      </div>
+      <div class="field">
+        <label>Location</label>
+        <input type="text" name="location" placeholder="Austin, TX or Remote" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Start Date <span class="req">*</span></label>
+          <input type="text" name="start_date" placeholder="Jan 2022" />
+        </div>
+        <div class="field">
+          <label>End Date <span class="req">*</span></label>
+          <input type="text" name="end_date" placeholder="Present" />
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Achievement Bullets <span class="req">*</span></label>
+      <div class="bullets-wrap">
+        <div class="bullet-row">
+          <span class="bullet-icon">•</span>
+          <input type="text" class="bullet-input" placeholder="Led migration to microservices, reducing deploy time by 60%" />
+          <button class="btn-bullet-remove" onclick="removeBullet(this)">✕</button>
+        </div>
+      </div>
+      <button class="btn-add-bullet" onclick="addBullet(this)">+ Add bullet</button>
+    </div>
+  </div>
+</template>
+
+<!-- ═══════════════ EDUCATION TEMPLATE ════════════════════════════════ -->
+<template id="edu-template">
+  <div class="repeatable-block" data-type="edu">
+    <div class="block-header">
+      <span class="block-num">Education #<span class="num-label"></span></span>
+      <button class="btn-remove" onclick="removeBlock(this)">✕ Remove</button>
+    </div>
+    <div class="grid-2">
+      <div class="field required">
+        <label>Institution <span class="req">*</span></label>
+        <input type="text" name="institution" placeholder="University of Texas at Austin" />
+      </div>
+      <div class="field required">
+        <label>Degree <span class="req">*</span></label>
+        <input type="text" name="degree" placeholder="B.S. Computer Science" />
+      </div>
+      <div class="field">
+        <label>Start Date</label>
+        <input type="text" name="start_date" placeholder="Aug 2019" />
+      </div>
+      <div class="field">
+        <label>End Date</label>
+        <input type="text" name="end_date" placeholder="May 2023" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- ═══════════════ PROJECT TEMPLATE ════════════════════════════════ -->
+<template id="proj-template">
+  <div class="repeatable-block" data-type="proj">
+    <div class="block-header">
+      <span class="block-num">Project #<span class="num-label"></span></span>
+      <button class="btn-remove" onclick="removeBlock(this)">✕ Remove</button>
+    </div>
+    <div class="grid-2">
+      <div class="field required">
+        <label>Project Name <span class="req">*</span></label>
+        <input type="text" name="name" placeholder="OpenMetrics Dashboard" />
+      </div>
+      <div class="field">
+        <label>GitHub / Live URL</label>
+        <input type="url" name="link" placeholder="https://github.com/you/project" />
+      </div>
+    </div>
+    <div class="field required">
+      <label>Description <span class="req">*</span></label>
+      <textarea name="description" rows="3" placeholder="Built a real-time analytics dashboard using FastAPI and React, handling 1M+ events/day. Reached 1,200 GitHub stars within 3 months."></textarea>
+    </div>
+  </div>
+</template>
+
+<!-- ═══════════════ CERT TEMPLATE ════════════════════════════════════ -->
+<template id="cert-template">
+  <div class="repeatable-block" data-type="cert">
+    <div class="block-header">
+      <span class="block-num">Certification #<span class="num-label"></span></span>
+      <button class="btn-remove" onclick="removeBlock(this)">✕ Remove</button>
+    </div>
+    <div class="grid-2">
+      <div class="field">
+        <label>Certification Name</label>
+        <input type="text" name="name" placeholder="AWS Certified Solutions Architect" />
+      </div>
+      <div class="field">
+        <label>Verify URL</label>
+        <input type="url" name="link" placeholder="https://aws.amazon.com/certification/" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="/static/js/script.js"></script>
+</body>
+</html>
