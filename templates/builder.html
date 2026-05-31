@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% block title %}Free ATS Resume Builder — Download PDF in 60 Seconds | ResumeATS{% endblock %}
+{% block meta_desc %}Build a free ATS-optimized resume online. Instant PDF download. No login required. Tested against Workday, Taleo, Greenhouse & iCIMS.{% endblock %}
+
+{% block content %}
+<!-- Page hero — no ads -->
+<section class="page-hero">
+  <div class="ph-inner">
+    <span class="eyebrow">Resume Builder</span>
+    <h1>Build Your ATS Resume <span class="grad-text">in 60 Seconds</span></h1>
+    <p>Fill the form below — download a professionally formatted ATS-optimized PDF instantly.</p>
+    <div class="ph-chips">
+      <span class="ph-chip">📄 1-Page Guarantee</span>
+      <span class="ph-chip">🔤 100% Selectable Text</span>
+      <span class="ph-chip">🚫 Zero Images in PDF</span>
+      <span class="ph-chip">🔒 No Data Stored</span>
+    </div>
+  </div>
+</section>
+
+<div class="builder-layout">
+  <div class="builder-col">
+
+    <!-- Progress -->
+    <div class="prog-row">
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+      <span class="prog-pct" id="progPct">0%</span>
+    </div>
+
+    <!-- 01 CONTACT -->
+    <div class="bcard" id="s-contact">
+      <div class="bcard-top">
+        <div class="bcard-num">01</div>
+        <div><h2>Contact Information</h2><p>Becomes the header line of your resume</p></div>
+      </div>
+      <div class="grid2">
+        <div class="field req"><label>Full Name <b>*</b></label><input id="f-name" type="text" placeholder="Jordan Smith" autocomplete="name"/></div>
+        <div class="field req"><label>Email <b>*</b></label><input id="f-email" type="email" placeholder="jordan@email.com" autocomplete="email"/></div>
+        <div class="field"><label>Phone</label><input id="f-phone" type="tel" placeholder="+1 (555) 234-5678" autocomplete="tel"/></div>
+        <div class="field"><label>Location</label><input id="f-city" type="text" placeholder="Austin, TX"/></div>
+        <div class="field"><label>LinkedIn URL</label><input id="f-linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile"/></div>
+        <div class="field"><label>GitHub URL</label><input id="f-github" type="url" placeholder="https://github.com/yourusername"/></div>
+        <div class="field"><label>Portfolio URL</label><input id="f-portfolio" type="url" placeholder="https://yourportfolio.com"/></div>
+        <div class="field"><label>Website URL</label><input id="f-website" type="url" placeholder="https://yourwebsite.com"/></div>
+      </div>
+    </div>
+
+    <!-- 02 SUMMARY -->
+    <div class="bcard" id="s-summary">
+      <div class="bcard-top">
+        <div class="bcard-num">02</div>
+        <div><h2>Professional Summary</h2><p>3–4 sentences · Title + years + top skills + biggest measurable win</p></div>
+      </div>
+      <div class="tip-box">💡 Mirror keywords from the job description exactly — ATS scores exact keyword matches.</div>
+      <div class="field">
+        <textarea id="f-summary" rows="4" placeholder="Software Engineer with 5+ years building scalable Python APIs. Proficient in Django, PostgreSQL, and AWS. Reduced system latency by 40% at Acme Corp serving 2M+ daily users."></textarea>
+        <span class="ccount" id="sumCount">0 chars</span>
+      </div>
+    </div>
+
+    <!-- 03 EXPERIENCE -->
+    <div class="bcard" id="s-exp">
+      <div class="bcard-top">
+        <div class="bcard-num">03</div>
+        <div><h2>Work Experience</h2><p>Action verb + task + metric per bullet</p></div>
+      </div>
+      <div class="tip-box">💡 Formula: "Led migration to microservices, reducing deploy time by 60%"</div>
+      <div id="exp-list"></div>
+      <button class="btn-add-block" onclick="addExp()">+ Add Experience</button>
+    </div>
+
+    <!-- 04 EDUCATION -->
+    <div class="bcard" id="s-edu">
+      <div class="bcard-top">
+        <div class="bcard-num">04</div>
+        <div><h2>Education</h2><p>Most recent degree first</p></div>
+      </div>
+      <div id="edu-list"></div>
+      <button class="btn-add-block" onclick="addEdu()">+ Add Education</button>
+    </div>
+
+    <!-- 05 PROJECTS -->
+    <div class="bcard" id="s-proj">
+      <div class="bcard-top">
+        <div class="bcard-num">05</div>
+        <div><h2>Projects</h2><p>Add GitHub links — recruiters click them</p></div>
+      </div>
+      <div id="proj-list"></div>
+      <button class="btn-add-block" onclick="addProj()">+ Add Project</button>
+    </div>
+
+    <!-- 06 SKILLS -->
+    <div class="bcard" id="s-skills">
+      <div class="bcard-top">
+        <div class="bcard-num">06</div>
+        <div><h2>Skills</h2><p>Comma-separated · copy exact keywords from job postings</p></div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>Languages & Tools</label><input id="f-langs" type="text" placeholder="Python, SQL, React, Docker, AWS"/></div>
+        <div class="field"><label>Techniques & Methods</label><input id="f-tech" type="text" placeholder="Machine Learning, REST API Design, CI/CD"/></div>
+        <div class="field"><label>Soft Skills</label><input id="f-soft" type="text" placeholder="Leadership, Mentorship, Communication"/></div>
+      </div>
+    </div>
+
+    <!-- 07 CERTIFICATIONS -->
+    <div class="bcard" id="s-cert">
+      <div class="bcard-top">
+        <div class="bcard-num">07</div>
+        <div><h2>Certifications <span class="opt-tag">Optional</span></h2><p>Add verify links to prove credentials</p></div>
+      </div>
+      <div id="cert-list"></div>
+      <button class="btn-add-block" onclick="addCert()">+ Add Certification</button>
+    </div>
+
+    <!-- GENERATE -->
+    <div class="gen-zone">
+      <div id="errBox" class="err-box hidden"></div>
+      <button class="btn-generate" id="genBtn" onclick="generatePDF()">
+        <span id="genIcon">⚡</span>
+        <span id="genText">Generate ATS Resume PDF</span>
+      </button>
+      <p class="gen-note">Free · No email · Instant download · No data stored on our servers</p>
+    </div>
+
+    <!-- Checker cross-sell (content, not ad) -->
+    <a href="/checker" class="checker-promo">
+      <div class="cp-left">
+        <div class="cp-score">93</div>
+        <div>
+          <strong>Check Your Existing Resume Score</strong>
+          <p>Upload any PDF → honest ATS score out of 100 + 5 specific recommendations</p>
+        </div>
+      </div>
+      <span class="cp-arrow">→</span>
+    </a>
+
+  </div><!-- /builder-col -->
+
+  <!-- SIDEBAR -->
+  <aside class="builder-aside">
+    <div class="sb-widget">
+      <h3>✅ ATS Writing Rules</h3>
+      <ul class="sb-list">
+        <li>Action verbs first: <em>Led, Built, Reduced, Automated</em></li>
+        <li>Numbers always: 40% faster · $2M · 10K users</li>
+        <li>Mirror keywords from job descriptions exactly</li>
+        <li>Use "Jan 2022" date format — not "2022"</li>
+        <li>No tables, columns, or text boxes</li>
+        <li>No photos, logos, or icons in PDF</li>
+      </ul>
+    </div>
+    <div class="sb-widget" style="margin-top:0">
+      <h3>🎯 Recommended Tools</h3>
+      <a href="https://linkedin.com/premium" class="aff-item" target="_blank" rel="noopener nofollow">
+        <span>💼</span><div><strong>LinkedIn Premium</strong><em>See who viewed your profile</em></div><span>→</span>
+      </a>
+      <a href="https://grammarly.com" class="aff-item" target="_blank" rel="noopener nofollow">
+        <span>✍️</span><div><strong>Grammarly</strong><em>Zero typos in your resume</em></div><span>→</span>
+      </a>
+      <a href="https://coursera.org" class="aff-item" target="_blank" rel="noopener nofollow">
+        <span>🎓</span><div><strong>Coursera</strong><em>Add certifications fast</em></div><span>→</span>
+      </a>
+      <p class="aff-disc">* Some links may be affiliate links</p>
+    </div>
+  </aside>
+</div>
+
+<!-- TEMPLATES -->
+<template id="tpl-exp">
+  <div class="rep-block">
+    <div class="rep-hd"><span class="rep-lbl">Experience #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
+    <div class="grid2">
+      <div class="field"><label>Job Title <b>*</b></label><input name="title" type="text" placeholder="Software Engineer"/></div>
+      <div class="field"><label>Company <b>*</b></label><input name="company" type="text" placeholder="Acme Corp"/></div>
+      <div class="field"><label>Location</label><input name="location" type="text" placeholder="Austin, TX or Remote"/></div>
+      <div class="fld-pair">
+        <div class="field"><label>Start <b>*</b></label><input name="start_date" type="text" placeholder="Jan 2022"/></div>
+        <div class="field"><label>End <b>*</b></label><input name="end_date" type="text" placeholder="Present"/></div>
+      </div>
+    </div>
+    <div class="field"><label>Achievement Bullets <b>*</b></label>
+      <div class="bwrap">
+        <div class="brow"><span class="bdot">•</span><input class="binp" type="text" placeholder="Led migration to microservices, reducing deploy time by 60%"/><button class="bx" onclick="delBullet(this)">✕</button></div>
+      </div>
+      <button class="btn-add-bullet" onclick="addBullet(this)">+ Add bullet</button>
+    </div>
+  </div>
+</template>
+<template id="tpl-edu">
+  <div class="rep-block">
+    <div class="rep-hd"><span class="rep-lbl">Education #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
+    <div class="grid2">
+      <div class="field"><label>Institution <b>*</b></label><input name="institution" type="text" placeholder="University of Texas"/></div>
+      <div class="field"><label>Degree <b>*</b></label><input name="degree" type="text" placeholder="B.S. Computer Science"/></div>
+      <div class="field"><label>Start Date</label><input name="start_date" type="text" placeholder="Aug 2019"/></div>
+      <div class="field"><label>End Date</label><input name="end_date" type="text" placeholder="May 2023"/></div>
+    </div>
+  </div>
+</template>
+<template id="tpl-proj">
+  <div class="rep-block">
+    <div class="rep-hd"><span class="rep-lbl">Project #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
+    <div class="grid2">
+      <div class="field"><label>Project Name <b>*</b></label><input name="name" type="text" placeholder="OpenMetrics Dashboard"/></div>
+      <div class="field"><label>GitHub / Live URL</label><input name="link" type="url" placeholder="https://github.com/you/project"/></div>
+    </div>
+    <div class="field"><label>Description <b>*</b></label><textarea name="description" rows="3" placeholder="Built a real-time analytics dashboard using FastAPI and React. Reached 1,200 GitHub stars within 3 months."></textarea></div>
+  </div>
+</template>
+<template id="tpl-cert">
+  <div class="rep-block">
+    <div class="rep-hd"><span class="rep-lbl">Certification #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
+    <div class="grid2">
+      <div class="field"><label>Name</label><input name="name" type="text" placeholder="AWS Certified Solutions Architect"/></div>
+      <div class="field"><label>Verify URL</label><input name="link" type="url" placeholder="https://aws.amazon.com/certification/"/></div>
+    </div>
+  </div>
+</template>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/script.js"></script>{% endblock %}

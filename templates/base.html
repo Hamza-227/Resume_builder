@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>{% block title %}ResumeATS — Beat the ATS. Land the Interview.{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}Free ATS resume builder and score checker. Build optimized resumes that pass Workday, Taleo, Greenhouse & iCIMS — instantly, no login required.{% endblock %}"/>
+  <meta name="keywords" content="{% block meta_keys %}ATS resume builder free,ATS checker,free resume builder,resume PDF download,ATS score{% endblock %}"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="canonical" href="{% block canonical %}{{ request.url }}{% endblock %}"/>
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% block og_title %}ResumeATS — Beat the ATS. Land the Interview.{% endblock %}"/>
+  <meta property="og:description" content="{% block og_desc %}Free ATS resume builder and score checker. No login, instant PDF.{% endblock %}"/>
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}"/>
+  <meta property="og:url" content="{{ request.url }}"/>
+  <meta property="og:image" content="/static/images/og.png"/>
+  <meta property="og:site_name" content="ResumeATS"/>
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="{% block tw_title %}ResumeATS{% endblock %}"/>
+  <meta name="twitter:description" content="{% block tw_desc %}Free ATS resume builder and checker.{% endblock %}"/>
+  <!-- JSON-LD -->
+  {% block schema %}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ResumeATS","url":"{{ request.host_url }}","description":"Free ATS resume builder and score checker","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  {% endblock %}
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <!-- Prism syntax highlighting for blog posts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"/>
+  <link rel="stylesheet" href="/static/css/main.css"/>
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="/" class="nav-brand">
+      <div class="brand-icon">◈</div>
+      <span>ResumeATS</span>
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="/" class="nav-item {% if request.endpoint=='index' %}active{% endif %}">Home</a>
+      <a href="/builder" class="nav-item {% if request.endpoint=='builder' %}active{% endif %}">Builder</a>
+      <a href="/checker" class="nav-item {% if request.endpoint=='checker' %}active{% endif %}">ATS Checker</a>
+      <a href="/blog" class="nav-item {% if 'blog' in (request.endpoint or '') %}active{% endif %}">Blog</a>
+      <a href="/about" class="nav-item {% if request.endpoint=='about' %}active{% endif %}">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <span class="theme-icon">☀</span>
+      </button>
+      <a href="/builder" class="nav-cta">Build Resume →</a>
+      <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>{% block content %}{% endblock %}</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-glow"></div>
+  <div class="footer-container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <div class="brand-icon">◈</div>
+          <span>ResumeATS</span>
+        </div>
+        <p class="footer-tagline">The AI-powered career platform that helps you build resumes that actually get read — and get you the interviews you deserve.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="GitHub">⌥</a>
+        </div>
+      </div>
+      <div class="footer-links-grid">
+        <div class="footer-col">
+          <h4>Tools</h4>
+          <a href="/builder">Resume Builder</a>
+          <a href="/checker">ATS Checker</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="/blog">All Articles</a>
+          <a href="/blog?category=Resume+Tips">Resume Tips</a>
+          <a href="/blog?category=LinkedIn">LinkedIn</a>
+          <a href="/blog?category=Career+Tips">Career Tips</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 ResumeATS · Free forever · No data stored · No login required</p>
+      <p class="footer-disc">ATS scores are estimates based on common ATS criteria. Results may vary by system and job requirements.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="/static/js/main.js"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

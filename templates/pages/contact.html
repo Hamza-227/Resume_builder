@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Contact ResumeATS{% endblock %}
+{% block meta_desc %}Contact the ResumeATS team. Send feedback, bug reports, or partnership inquiries.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="ph-inner">
+    <span class="eyebrow">Contact</span>
+    <h1>Get in <span class="grad-text">Touch</span></h1>
+    <p>We read every message and respond within 48 hours.</p>
+  </div>
+</section>
+<div class="page-content">
+  <div class="contact-grid">
+    <div class="contact-form">
+      <h2 style="margin-top:0">Send a Message</h2>
+      <div id="c-success" class="hidden" style="background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;padding:14px 18px;border-radius:10px;margin-bottom:20px;font-weight:600;">✓ Message sent! We'll respond within 48 hours.</div>
+      <div class="field"><label>Your Name</label><input type="text" id="c-name" placeholder="Jordan Smith"/></div>
+      <div class="field"><label>Email Address</label><input type="email" id="c-email" placeholder="jordan@email.com"/></div>
+      <div class="field"><label>Subject</label><input type="text" id="c-subject" placeholder="Bug report / Feedback / Partnership"/></div>
+      <div class="field"><label>Message</label><textarea id="c-msg" rows="5" placeholder="Tell us what's on your mind…"></textarea></div>
+      <button class="btn-generate" style="max-width:100%" onclick="submitContact()"><span id="c-btn">Send Message</span></button>
+    </div>
+    <div class="contact-info">
+      <h2 style="margin-top:0">Other Ways to Reach Us</h2>
+      <p>📧 <strong>Email:</strong> hello@resumeats.com</p>
+      <p>🐦 <strong>Twitter/X:</strong> @ResumeATS</p>
+      <p>💼 <strong>LinkedIn:</strong> linkedin.com/company/resumeats</p>
+      <h3 style="margin-top:32px;font-family:var(--font-head);font-size:17px;font-weight:700;color:var(--text-primary)">Common Topics</h3>
+      <p><strong>Bug reports:</strong> Tell us exactly what happened, your browser, and device.</p>
+      <p><strong>Feature requests:</strong> Have an idea? We love hearing from users.</p>
+      <p><strong>Partnerships:</strong> Interested in collaboration or affiliates? Send details.</p>
+    </div>
+  </div>
+</div>
+<script>
+function submitContact(){
+  const n=document.getElementById('c-name').value.trim(),e=document.getElementById('c-email').value.trim(),m=document.getElementById('c-msg').value.trim();
+  if(!n||!e||!m){alert('Please fill in name, email, and message.');return;}
+  document.getElementById('c-success').classList.remove('hidden');
+  ['c-name','c-email','c-subject','c-msg'].forEach(id=>document.getElementById(id).value='');
+}
+</script>
+{% endblock %}

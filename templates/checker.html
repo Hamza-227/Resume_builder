@@ -1,93 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free ATS Resume Checker — Score Your Resume Out of 100 | ResumeATS</title>
-  <meta name="description" content="Upload your resume PDF and get an honest ATS compatibility score out of 100. Free instant analysis with 5 specific improvement recommendations." />
-  <meta name="keywords" content="ATS resume checker free, resume score checker, ATS score, resume compatibility check, resume analyzer" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://yourdomain.com/checker" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/style.css" />
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}Free ATS Resume Checker — Get Your Score Out of 100 | ResumeATS{% endblock %}
+{% block meta_desc %}Upload your resume PDF and get an honest ATS compatibility score out of 100 with 5 specific improvement recommendations. Free, instant, no login required.{% endblock %}
+{% block meta_keys %}ATS resume checker free,resume score checker,ATS score,resume analyzer,resume compatibility check{% endblock %}
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="logo-mark">◈</span><span>ResumeATS</span></a>
-    <div class="nav-links">
-      <a href="/" class="nav-link">Builder</a>
-      <a href="/checker" class="nav-link active">ATS Checker</a>
-    </div>
-    <span class="nav-pill">Free Forever</span>
-  </div>
-</nav>
-
-<div class="ad-zone ad-zone-header"><div class="ad-ph">Advertisement · 728×90</div></div>
-
-<section class="checker-hero">
-  <div class="checker-hero-inner">
-    <div class="hero-tag"><span class="tag-dot"></span>Free · Instant · Honest Score</div>
-    <h1>ATS Resume Checker</h1>
-    <p>Upload your resume PDF — get a real score out of 100 and 5 specific things to fix. No fluff, no fake "98% score" nonsense.</p>
+{% block content %}
+<section class="page-hero">
+  <div class="ph-inner">
+    <span class="eyebrow">ATS Checker</span>
+    <h1>Get Your Honest <span class="grad-text">ATS Score</span></h1>
+    <p>Upload your PDF resume — get a real score out of 100 and 5 specific things to fix. No fake "98%" results.</p>
   </div>
 </section>
 
 <div class="checker-layout">
-
-  <!-- LEFT: UPLOAD + RESULTS -->
   <div class="checker-main">
 
-    <!-- UPLOAD CARD -->
-    <div class="card" id="upload-card">
-      <div class="card-top">
-        <div class="card-num">01</div>
-        <div class="card-title-wrap"><h2>Upload Your Resume</h2><p>PDF only · Max 5MB · No data stored</p></div>
+    <!-- Upload card -->
+    <div class="bcard" id="upload-card">
+      <div class="bcard-top">
+        <div class="bcard-num">01</div>
+        <div><h2>Upload Your Resume</h2><p>PDF only · Max 5MB · Never stored on our servers</p></div>
       </div>
-
       <div class="drop-zone" id="dropZone" onclick="document.getElementById('fileInput').click()">
-        <input type="file" id="fileInput" accept=".pdf" style="display:none" onchange="handleFile(this.files[0])" />
+        <input type="file" id="fileInput" accept=".pdf" style="display:none" onchange="handleFile(this.files[0])"/>
         <div class="drop-icon">📄</div>
-        <p class="drop-main">Drop your PDF here or <span class="drop-link">browse</span></p>
-        <p class="drop-sub">PDF only · Max 5MB</p>
-        <div class="file-selected hidden" id="fileSelected">
-          <span class="file-icon">✓</span>
+        <p class="drop-main">Drop your PDF here or <span class="drop-lnk">click to browse</span></p>
+        <p class="drop-sub">PDF only · Max 5MB · File is never stored</p>
+        <div id="fileSelected" class="file-sel hidden">
+          <span class="file-check">✓</span>
           <span id="fileName">No file chosen</span>
         </div>
       </div>
-
-      <div id="checkErr" class="err hidden"></div>
-
-      <button class="btn-gen" id="checkBtn" onclick="checkResume()" disabled>
-        <span id="checkIcon">📊</span>
-        <span id="checkText">Check ATS Score</span>
-      </button>
-      <p class="gen-note">Your file is analyzed locally · Never stored on our servers</p>
+      <div id="checkErr" class="err-box hidden"></div>
+      <div class="gen-zone">
+        <button class="btn-generate" id="checkBtn" onclick="checkResume()" disabled>
+          <span id="checkIcon">📊</span>
+          <span id="checkText">Check ATS Score</span>
+        </button>
+        <p class="gen-note">Analyzed in memory · File never stored · Results instant</p>
+      </div>
     </div>
 
-    <!-- RESULTS CARD (hidden until analysis) -->
-    <div class="card results-card hidden" id="results-card">
-
-      <!-- Score header -->
-      <div class="score-header">
+    <!-- Results (hidden until analysis) -->
+    <div class="bcard hidden" id="results-card">
+      <div class="results-header">
         <div class="score-ring-wrap">
-          <svg class="score-ring" viewBox="0 0 120 120">
-            <circle class="ring-bg" cx="60" cy="60" r="52" />
-            <circle class="ring-fill" id="ringFill" cx="60" cy="60" r="52"
-              stroke-dasharray="326.7" stroke-dashoffset="326.7" />
+          <svg class="score-svg" viewBox="0 0 120 120">
+            <circle class="sr-bg2" cx="60" cy="60" r="52"/>
+            <circle class="sr-fill2" id="srFill2" cx="60" cy="60" r="52"
+              stroke-dasharray="326.7" stroke-dashoffset="326.7"/>
           </svg>
-          <div class="score-center">
-            <span class="score-num" id="scoreNum">0</span>
-            <span class="score-denom">/100</span>
+          <div class="score-center-txt">
+            <span id="scoreNum" class="score-big2">0</span>
+            <span class="score-den">/100</span>
           </div>
         </div>
-        <div class="score-meta">
+        <div class="results-meta">
           <h2>ATS Compatibility Score</h2>
-          <p id="scoreVerdict" class="score-verdict"></p>
-          <div class="score-breakdown" id="scoreBreakdown"></div>
+          <div id="scoreVerdict" class="verdict"></div>
+          <div id="bline" class="bline"></div>
         </div>
       </div>
 
@@ -95,98 +66,57 @@
       <div class="cat-bars" id="catBars"></div>
 
       <!-- Recommendations -->
-      <div class="recs-section">
-        <h3 class="recs-title">🎯 5 Things to Fix Right Now</h3>
-        <div class="recs-list" id="recsList"></div>
-      </div>
+      <h3 class="recs-h">🎯 5 Things to Fix Right Now</h3>
+      <div class="recs-list" id="recsList"></div>
 
       <!-- CTA -->
       <div class="results-cta">
         <p>Fix these issues in under 5 minutes using our builder:</p>
-        <a href="/" class="btn-gen" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px">
+        <a href="/builder" class="btn-generate" style="text-decoration:none;max-width:340px">
           ⚡ Build an ATS-Optimized Resume Free
         </a>
       </div>
-
-      <!-- AD: POST-RESULTS -->
-      <div class="ad-zone" style="margin-top:24px"><div class="ad-ph">Advertisement · Post-Results · High CTR</div></div>
     </div>
 
-    <!-- HOW IT WORKS -->
-    <div class="card how-card">
+    <!-- How we score -->
+    <div class="bcard how-score">
       <h3>How We Score Your Resume</h3>
       <div class="how-grid">
-        <div class="how-item">
-          <span class="how-icon">📝</span>
-          <div><strong>Text Extraction (20pts)</strong><p>Can ATS software read your text? Checks for selectable, parseable text vs. image-only PDFs.</p></div>
-        </div>
-        <div class="how-item">
-          <span class="how-icon">📋</span>
-          <div><strong>Section Headers (20pts)</strong><p>Are all 6 required sections present: SUMMARY, EXPERIENCE, EDUCATION, PROJECTS, SKILLS, CERTIFICATIONS?</p></div>
-        </div>
-        <div class="how-item">
-          <span class="how-icon">📏</span>
-          <div><strong>Length & Format (20pts)</strong><p>Is it one page? Correct file size? No excessive whitespace or overly dense text?</p></div>
-        </div>
-        <div class="how-item">
-          <span class="how-icon">🔢</span>
-          <div><strong>Metrics & Keywords (20pts)</strong><p>Does your resume contain numbers, percentages, and action verbs that ATS scoring systems look for?</p></div>
-        </div>
-        <div class="how-item">
-          <span class="how-icon">📎</span>
-          <div><strong>Contact & Links (10pts)</strong><p>Are email, LinkedIn, and other contact details present and properly formatted?</p></div>
-        </div>
-        <div class="how-item">
-          <span class="how-icon">⚠️</span>
-          <div><strong>Red Flag Check (10pts)</strong><p>Detects images, tables, columns, special characters, and other ATS killers.</p></div>
-        </div>
+        <div class="hi"><span>📝</span><div><strong>Text Extraction (20pts)</strong><p>Can ATS software read your text? Checks for selectable text vs. image-only PDFs.</p></div></div>
+        <div class="hi"><span>📋</span><div><strong>Section Headers (20pts)</strong><p>Are all required sections present: SUMMARY, EXPERIENCE, EDUCATION, SKILLS, PROJECTS?</p></div></div>
+        <div class="hi"><span>📏</span><div><strong>Length & Format (20pts)</strong><p>Is it one page? Correct file size? Appropriate word count and density?</p></div></div>
+        <div class="hi"><span>🔢</span><div><strong>Metrics & Keywords (20pts)</strong><p>Numbers, percentages, and action verbs that ATS scoring systems reward.</p></div></div>
+        <div class="hi"><span>📎</span><div><strong>Contact & Links (10pts)</strong><p>Email, phone, LinkedIn, and other contact details present and readable.</p></div></div>
+        <div class="hi"><span>⚠️</span><div><strong>Red Flag Check (10pts)</strong><p>Images, tables, columns, fancy bullets, and other ATS-killing elements.</p></div></div>
       </div>
     </div>
 
   </div><!-- /checker-main -->
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="ad-zone"><div class="ad-ph" style="min-height:250px;width:300px">Ad · 300×250 Sidebar</div></div>
-
-    <div class="sb-card">
-      <h3>📊 What ATS Systems Look For</h3>
-      <ul class="sb-tips">
-        <li><strong>Exact keyword matches</strong> from the job description</li>
-        <li><strong>Standard section headers</strong> in specific order</li>
-        <li><strong>Selectable text</strong> — not images or scanned PDF</li>
-        <li><strong>No tables or columns</strong> — breaks parsing</li>
-        <li><strong>Quantified achievements</strong> with numbers</li>
-        <li><strong>Standard fonts</strong> — Times, Arial, Calibri only</li>
+  <!-- Sidebar -->
+  <aside class="builder-aside">
+    <div class="sb-widget">
+      <h3>📊 What ATS Looks For</h3>
+      <ul class="sb-list">
+        <li>Exact keyword matches from the job posting</li>
+        <li>Standard section headers in order</li>
+        <li>Selectable text — not scanned images</li>
+        <li>No tables or multi-column layouts</li>
+        <li>Quantified achievements with numbers</li>
+        <li>Standard fonts: Times, Arial, Calibri</li>
       </ul>
     </div>
-
-    <div class="sb-card sb-aff">
-      <h3>🎯 Boost Your Job Search</h3>
-      <a href="https://linkedin.com/premium" class="aff-row" target="_blank" rel="noopener nofollow">
+    <div class="sb-widget">
+      <h3>🎯 Recommended Tools</h3>
+      <a href="https://linkedin.com/premium" class="aff-item" target="_blank" rel="noopener nofollow">
         <span>💼</span><div><strong>LinkedIn Premium</strong><em>See who viewed your profile</em></div><span>→</span>
       </a>
-      <a href="https://grammarly.com" class="aff-row" target="_blank" rel="noopener nofollow">
+      <a href="https://grammarly.com" class="aff-item" target="_blank" rel="noopener nofollow">
         <span>✍️</span><div><strong>Grammarly</strong><em>Zero typos in your resume</em></div><span>→</span>
-      </a>
-      <a href="https://coursera.org" class="aff-row" target="_blank" rel="noopener nofollow">
-        <span>🎓</span><div><strong>Coursera</strong><em>Add certifications fast</em></div><span>→</span>
       </a>
       <p class="aff-disc">* Some links may be affiliate links</p>
     </div>
-
-    <div class="ad-zone"><div class="ad-ph" style="min-height:300px;width:300px">Ad · 300×600 Half Page</div></div>
   </aside>
 </div>
-
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand"><span class="logo-mark">◈</span> ResumeATS<p>Build resumes that pass ATS systems. Free forever.</p></div>
-    <nav class="footer-nav"><a href="/">Builder</a><a href="/checker">ATS Checker</a><a href="/sitemap.xml">Sitemap</a></nav>
-  </div>
-  <p class="footer-copy">© 2024 ResumeATS · No data stored · No login required</p>
-</footer>
-
-<script src="/static/js/checker.js"></script>
-</body>
-</html>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/checker.js"></script>{% endblock %}

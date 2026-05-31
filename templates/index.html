@@ -1,305 +1,337 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ResumeATS — Free ATS Resume Builder | Download PDF Instantly</title>
-  <meta name="description" content="Build a free ATS-optimized resume online. Instant PDF download. No login required. Tested against Workday, Taleo, Greenhouse & iCIMS. 100% free forever." />
-  <meta name="keywords" content="ATS resume builder free, free resume builder, CV maker online free, resume generator PDF, ATS friendly resume" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://yourdomain.com/" />
-  <meta property="og:title" content="ResumeATS — Free ATS Resume Builder" />
-  <meta property="og:description" content="Build a professional ATS-optimized resume for free. Instant PDF download. No login." />
-  <meta property="og:type" content="website" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ResumeATS","description":"Free ATS Resume Builder","url":"https://yourdomain.com","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/css/style.css" />
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %}ResumeATS — Free ATS Resume Builder & Score Checker | Beat the Bots{% endblock %}
+{% block meta_desc %}75% of resumes are rejected by ATS before a human sees them. Build an ATS-optimized resume in 60 seconds or check your existing score — free, no login required.{% endblock %}
+{% block meta_keys %}ATS resume builder free,ATS score checker,free resume builder,resume PDF,ATS friendly resume,beat ATS{% endblock %}
+{% block schema %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ResumeATS","description":"Free ATS resume builder and score checker","url":"{{ request.host_url }}","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"3240"}}</script>
+{% endblock %}
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="/" class="nav-logo"><span class="logo-mark">◈</span><span>ResumeATS</span></a>
-    <div class="nav-links">
-      <a href="/" class="nav-link active">Builder</a>
-      <a href="/checker" class="nav-link">ATS Checker</a>
+{% block content %}
+
+<!-- ═══════════ HERO ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-container">
+
+    <!-- Left: copy -->
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        No login · No card · 100% free
+      </div>
+      <h1 class="hero-h1">
+        Build an ATS Resume<br/>
+        <em>That Gets Past the Bots</em>
+      </h1>
+      <p class="hero-desc">
+        75% of resumes are rejected before a human ever sees them. Our platform helps you build <strong>ATS-optimized resumes</strong>, check your score instantly, and land more interviews — completely free.
+      </p>
+      <div class="hero-btns">
+        <a href="/checker" class="btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Check ATS Score
+        </a>
+        <a href="/builder" class="btn-secondary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+          Build Resume Free
+        </a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item"><span class="trust-check">✓</span> No login required</div>
+        <div class="hero-trust-item"><span class="trust-check">✓</span> No credit card</div>
+        <div class="hero-trust-item"><span class="trust-check">✓</span> Instant PDF download</div>
+        <div class="hero-trust-item"><span class="trust-check">✓</span> Zero data stored</div>
+      </div>
     </div>
-    <span class="nav-pill">Free Forever</span>
-  </div>
-</nav>
 
-<!-- AD: HEADER -->
-<div class="ad-zone ad-zone-header">
-  <div class="ad-ph">Advertisement · 728×90</div>
+    <!-- Right: dashboard mockup -->
+    <div class="hero-visual">
+      <div class="dash-card">
+        <div class="dash-topbar">
+          <span class="dtb-dot r"></span>
+          <span class="dtb-dot a"></span>
+          <span class="dtb-dot g"></span>
+          <span class="dtb-title">ATS Score Analysis</span>
+        </div>
+        <div class="score-row">
+          <div class="score-ring-wrap">
+            <svg viewBox="0 0 100 100" width="90" height="90">
+              <circle class="sr-bg" cx="50" cy="50" r="40"/>
+              <circle class="sr-fill" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+            </svg>
+            <div class="score-num-inner">
+              <span class="score-big">93</span>
+              <span class="score-slash">/100</span>
+            </div>
+          </div>
+          <div class="score-meta-col">
+            <p class="score-meta-label">ATS Compatible</p>
+            <p class="score-meta-sub">Excellent Score</p>
+            <div class="score-pass-badge">✓ Will Pass</div>
+          </div>
+        </div>
+        <div class="dash-bars">
+          <div class="db-row">
+            <span class="db-label">Text Extraction</span>
+            <div class="db-track"><div class="db-fill" style="background:#4ade80;width:0" data-w="100%"></div></div>
+            <span class="db-score">20/20</span>
+          </div>
+          <div class="db-row">
+            <span class="db-label">Section Headers</span>
+            <div class="db-track"><div class="db-fill" style="background:#4ade80;width:0" data-w="100%"></div></div>
+            <span class="db-score">20/20</span>
+          </div>
+          <div class="db-row">
+            <span class="db-label">Keywords</span>
+            <div class="db-track"><div class="db-fill" style="background:#fbbf24;width:0" data-w="80%"></div></div>
+            <span class="db-score">16/20</span>
+          </div>
+          <div class="db-row">
+            <span class="db-label">Format</span>
+            <div class="db-track"><div class="db-fill" style="background:#4ade80;width:0" data-w="100%"></div></div>
+            <span class="db-score">20/20</span>
+          </div>
+        </div>
+      </div>
+      <div class="float-card float-tl">
+        <span class="float-icon">⚡</span>
+        <div><strong>PDF Ready</strong><small>1-page ATS resume</small></div>
+      </div>
+      <div class="float-card float-br">
+        <span class="float-icon">🎯</span>
+        <div><strong>5 Fixes Found</strong><small>Specific improvements</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS ══════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item" data-reveal>
+      <div><span class="stat-num" data-target="10000">0</span><span class="stat-suf">+</span></div>
+      <span class="stat-label">Resumes Built</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item" data-reveal>
+      <div><span class="stat-num" data-target="93">0</span><span class="stat-suf">%</span></div>
+      <span class="stat-label">Avg ATS Score</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item" data-reveal>
+      <div><span class="stat-num" data-target="5">0</span></div>
+      <span class="stat-label">ATS Systems Tested</span>
+    </div>
+    <div class="stat-div"></div>
+    <div class="stat-item" data-reveal>
+      <div><span class="stat-num" data-target="60">0</span><span class="stat-suf">s</span></div>
+      <span class="stat-label">Average Build Time</span>
+    </div>
+  </div>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-blob"></div>
-  <div class="hero-blob hero-blob-2"></div>
-  <div class="hero-inner">
-    <div class="hero-tag"><span class="tag-dot"></span>No login · No card · 100% free</div>
-    <h1>Build an ATS Resume<br/><span class="hero-em">That Gets Past the Bots</span></h1>
-    <p class="hero-p">Fill the form, download your PDF in 60 seconds. Tested against Workday, Taleo, Greenhouse & iCIMS.</p>
-    <div class="hero-chips">
-      <span class="chip">📄 1-Page Guarantee</span>
-      <span class="chip">🔤 100% Selectable Text</span>
-      <span class="chip">🚫 Zero Images</span>
-      <span class="chip">🔒 No Data Stored</span>
+<!-- ═══════════ TOOLS ══════════════════════════════════════════ -->
+<section id="tools">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">AI Career Tools</span>
+      <h2>Everything to <span class="grad-text">Land Your Dream Job</span></h2>
+      <p>Professional-grade career tools — completely free, no account needed</p>
+    </div>
+    <div class="tools-grid">
+      <a href="/checker" class="tool-card tool-card-feat">
+        <div class="tool-glow"></div>
+        <div class="tool-badge">Most Popular</div>
+        <div class="tool-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6m-3-3h6" stroke-linecap="round"/></svg>
+        </div>
+        <h3>ATS Score Checker</h3>
+        <p>Upload your PDF resume and get an honest score out of 100 — with 5 specific, ranked recommendations. No fake 98% results.</p>
+        <div class="tool-cta">Check Your Score <span>→</span></div>
+      </a>
+      <a href="/builder" class="tool-card">
+        <div class="tool-glow"></div>
+        <div class="tool-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3>ATS Resume Builder</h3>
+        <p>Build a perfectly formatted, one-page ATS resume in 60 seconds. Tested against Workday, Taleo, Greenhouse & iCIMS.</p>
+        <div class="tool-cta">Build Resume <span>→</span></div>
+      </a>
+      <div class="tool-card tool-card-soon">
+        <div class="tool-badge tool-badge-soon">Coming Soon</div>
+        <div class="tool-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        </div>
+        <h3>AI Career Assistant</h3>
+        <p>AI-powered career coaching, job description analysis, interview prep, and personalized career path recommendations.</p>
+        <div class="tool-cta" style="color:var(--text-muted)">Notify Me →</div>
+      </div>
+      <div class="tool-card tool-card-soon">
+        <div class="tool-badge tool-badge-soon">Coming Soon</div>
+        <div class="tool-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <h3>LinkedIn Analyzer</h3>
+        <p>Optimize your LinkedIn profile for recruiter search algorithms. Keyword recommendations and profile strength scores.</p>
+        <div class="tool-cta" style="color:var(--text-muted)">Notify Me →</div>
+      </div>
     </div>
   </div>
 </section>
 
-<main class="page-layout">
-  <div class="form-col">
-
-    <!-- Progress -->
-    <div class="prog-wrap">
-      <div class="prog-track"><div class="prog-bar" id="progBar"></div></div>
-      <span class="prog-label" id="progLabel">Start filling to track progress</span>
+<!-- ═══════════ HOW IT WORKS ═══════════════════════════════════ -->
+<section class="how-sec" id="how">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Process</span>
+      <h2>Interview-Ready <span class="grad-text">in 3 Steps</span></h2>
     </div>
-
-    <!-- 01 CONTACT -->
-    <div class="card" id="s-contact">
-      <div class="card-top">
-        <div class="card-num">01</div>
-        <div class="card-title-wrap">
-          <h2>Contact Information</h2>
-          <p>Becomes the header of your resume</p>
-        </div>
+    <div class="steps-row">
+      <div class="step" style="transition-delay:.0s">
+        <div class="step-num">01</div>
+        <h3>Fill the Form</h3>
+        <p>Enter your experience, skills, education, and projects. Smart ATS tips guide every section.</p>
       </div>
-      <div class="grid2">
-        <div class="field req"><label>Full Name <b>*</b></label><input id="f-name" type="text" placeholder="Jordan Smith" /></div>
-        <div class="field req"><label>Email <b>*</b></label><input id="f-email" type="email" placeholder="jordan@email.com" /></div>
-        <div class="field"><label>Phone</label><input id="f-phone" type="tel" placeholder="+1 (555) 234-5678" /></div>
-        <div class="field"><label>Location</label><input id="f-city" type="text" placeholder="Austin, TX" /></div>
-        <div class="field"><label>LinkedIn URL</label><input id="f-linkedin" type="url" placeholder="https://linkedin.com/in/yourprofile" /></div>
-        <div class="field"><label>GitHub URL</label><input id="f-github" type="url" placeholder="https://github.com/yourusername" /></div>
-        <div class="field"><label>Portfolio URL</label><input id="f-portfolio" type="url" placeholder="https://yourportfolio.com" /></div>
-        <div class="field"><label>Website URL</label><input id="f-website" type="url" placeholder="https://yourwebsite.com" /></div>
+      <div class="step" style="transition-delay:.15s">
+        <div class="step-num">02</div>
+        <h3>Generate PDF</h3>
+        <p>Click once — receive a perfectly formatted, one-page ATS resume PDF instantly. No login.</p>
       </div>
-    </div>
-
-    <!-- 02 SUMMARY -->
-    <div class="card" id="s-summary">
-      <div class="card-top">
-        <div class="card-num">02</div>
-        <div class="card-title-wrap">
-          <h2>Professional Summary</h2>
-          <p>3–4 sentences · Title + years + top skills + biggest win</p>
-        </div>
+      <div class="step" style="transition-delay:.3s">
+        <div class="step-num">03</div>
+        <h3>Check & Optimize</h3>
+        <p>Upload to ATS checker. Get your honest score and 5 ranked improvements in seconds.</p>
       </div>
-      <div class="tip">💡 Mirror keywords from the job description exactly — ATS scores exact matches.</div>
-      <div class="field req">
-        <textarea id="f-summary" rows="4" placeholder="Software Engineer with 5+ years building scalable Python APIs. Proficient in Django, PostgreSQL, and AWS. Reduced system latency by 40% at Acme Corp serving 2M+ daily users."></textarea>
-        <span class="ccount" id="summaryCount">0 chars</span>
-      </div>
-    </div>
-
-    <!-- AD: IN-CONTENT -->
-    <div class="ad-zone"><div class="ad-ph">Advertisement · Responsive In-Content</div></div>
-
-    <!-- 03 EXPERIENCE -->
-    <div class="card" id="s-exp">
-      <div class="card-top">
-        <div class="card-num">03</div>
-        <div class="card-title-wrap">
-          <h2>Work Experience</h2>
-          <p>Action verb + task + metric per bullet</p>
-        </div>
-      </div>
-      <div class="tip">💡 "Led migration to microservices, reducing deploy time by 60%"</div>
-      <div id="exp-list"></div>
-      <button class="btn-add" onclick="addExp()">+ Add Experience</button>
-    </div>
-
-    <!-- 04 EDUCATION -->
-    <div class="card" id="s-edu">
-      <div class="card-top">
-        <div class="card-num">04</div>
-        <div class="card-title-wrap"><h2>Education</h2><p>Most recent degree first</p></div>
-      </div>
-      <div id="edu-list"></div>
-      <button class="btn-add" onclick="addEdu()">+ Add Education</button>
-    </div>
-
-    <!-- 05 PROJECTS -->
-    <div class="card" id="s-proj">
-      <div class="card-top">
-        <div class="card-num">05</div>
-        <div class="card-title-wrap"><h2>Projects</h2><p>Add GitHub links — recruiters click them</p></div>
-      </div>
-      <div id="proj-list"></div>
-      <button class="btn-add" onclick="addProj()">+ Add Project</button>
-    </div>
-
-    <!-- 06 SKILLS -->
-    <div class="card" id="s-skills">
-      <div class="card-top">
-        <div class="card-num">06</div>
-        <div class="card-title-wrap"><h2>Skills</h2><p>Comma-separated · copy exact keywords from job postings</p></div>
-      </div>
-      <div class="grid2">
-        <div class="field"><label>Languages & Tools</label><input id="f-langs" type="text" placeholder="Python, SQL, React, Docker, AWS" /></div>
-        <div class="field"><label>Techniques & Methods</label><input id="f-tech" type="text" placeholder="Machine Learning, REST API Design, CI/CD" /></div>
-        <div class="field"><label>Soft Skills</label><input id="f-soft" type="text" placeholder="Leadership, Mentorship, Communication" /></div>
-      </div>
-    </div>
-
-    <!-- 07 CERTIFICATIONS -->
-    <div class="card" id="s-cert">
-      <div class="card-top">
-        <div class="card-num">07</div>
-        <div class="card-title-wrap">
-          <h2>Certifications <span class="opt-badge">Optional</span></h2>
-          <p>Add verify links to prove credentials</p>
-        </div>
-      </div>
-      <div id="cert-list"></div>
-      <button class="btn-add" onclick="addCert()">+ Add Certification</button>
-    </div>
-
-    <!-- GENERATE -->
-    <div class="gen-zone">
-      <div id="errBox" class="err hidden"></div>
-      <button class="btn-gen" id="genBtn" onclick="generatePDF()">
-        <span id="genIcon">⚡</span>
-        <span id="genText">Generate ATS Resume PDF</span>
-      </button>
-      <p class="gen-note">Free · No email · Instant download · No data stored</p>
-    </div>
-
-    <!-- AD: POST DOWNLOAD -->
-    <div class="ad-zone hidden" id="postDlAd"><div class="ad-ph">Advertisement · Post-Download · Highest CTR</div></div>
-
-    <!-- CTA to checker -->
-    <a href="/checker" class="checker-cta">
-      <div class="cta-left">
-        <span class="cta-score-badge">100</span>
-        <div>
-          <strong>Check Your Existing Resume Score</strong>
-          <p>Upload any PDF → get honest ATS score + 5 recommendations</p>
-        </div>
-      </div>
-      <span class="cta-arrow">→</span>
-    </a>
-
-  </div><!-- /form-col -->
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="ad-zone"><div class="ad-ph" style="min-height:250px;width:300px">Ad · 300×250 Sidebar</div></div>
-
-    <div class="sb-card">
-      <h3>✅ ATS Writing Rules</h3>
-      <ul class="sb-tips">
-        <li>Action verbs first: <em>Led, Built, Reduced</em></li>
-        <li>Numbers always: 40% faster · $2M · 10K users</li>
-        <li>Mirror keywords from job description exactly</li>
-        <li>Use "Jan 2022" date format</li>
-        <li>No tables, columns, or text boxes</li>
-        <li>No photos, logos, or icons in PDF</li>
-      </ul>
-    </div>
-
-    <div class="sb-card sb-aff">
-      <h3>🎯 Boost Your Job Search</h3>
-      <a href="https://linkedin.com/premium" class="aff-row" target="_blank" rel="noopener nofollow">
-        <span>💼</span><div><strong>LinkedIn Premium</strong><em>See who viewed your profile</em></div><span>→</span>
-      </a>
-      <a href="https://grammarly.com" class="aff-row" target="_blank" rel="noopener nofollow">
-        <span>✍️</span><div><strong>Grammarly</strong><em>Zero typos in your resume</em></div><span>→</span>
-      </a>
-      <a href="https://coursera.org" class="aff-row" target="_blank" rel="noopener nofollow">
-        <span>🎓</span><div><strong>Coursera</strong><em>Add certifications fast</em></div><span>→</span>
-      </a>
-      <p class="aff-disc">* Some links may be affiliate links</p>
-    </div>
-
-    <div class="ad-zone"><div class="ad-ph" style="min-height:300px;width:300px">Ad · 300×600 Half Page</div></div>
-  </aside>
-</main>
-
-<!-- FAQ -->
-<section class="faq-sec">
-  <div class="faq-wrap">
-    <div class="faq-head"><span class="faq-eyebrow">FAQ</span><h2>Everything you need to know</h2></div>
-    <div class="faq-grid">
-      <div class="faq-item"><h3>What is an ATS resume?</h3><p>ATS software scans resumes before a human sees them. 99% of Fortune 500 companies use it. An ATS-friendly resume uses standard fonts, no tables or images, and exact keyword matches.</p></div>
-      <div class="faq-item"><h3>Is this really free forever?</h3><p>Yes. No login, no credit card, no watermark. Download unlimited PDFs instantly. We earn through ads and affiliate links — you never pay.</p></div>
-      <div class="faq-item"><h3>Do you store my data?</h3><p>No. Your data is processed in memory and immediately discarded. Nothing is saved to any database or server.</p></div>
-      <div class="faq-item"><h3>Which ATS systems does this work with?</h3><p>Workday, Taleo, Greenhouse, iCIMS, and Lever — covering 80%+ of Fortune 500 hiring pipelines.</p></div>
-      <div class="faq-item"><h3>Why only one page?</h3><p>Recruiters average 7 seconds per resume. One-page resumes have 2× higher callback rates for under-10-year experience. Our builder auto-scales to guarantee one page.</p></div>
-      <div class="faq-item"><h3>What font does the PDF use?</h3><p>Times-Roman only — the gold standard for ATS compatibility. Fancy fonts cause ATS parsing failures.</p></div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand"><span class="logo-mark">◈</span> ResumeATS<p>Build resumes that pass ATS systems. Free forever.</p></div>
-    <nav class="footer-nav"><a href="/">Builder</a><a href="/checker">ATS Checker</a><a href="/sitemap.xml">Sitemap</a></nav>
+<!-- ═══════════ BLOG PREVIEW ═══════════════════════════════════ -->
+{% if featured %}
+<section id="resources">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Career Resources</span>
+      <h2>Learn What <span class="grad-text">Gets You Hired</span></h2>
+      <p>No fluff, no generic advice — just what actually works in today's job market</p>
+    </div>
+    <div class="blog-prev-grid">
+      {% for post in featured %}
+      <a href="/blog/{{ post.slug }}" class="bp-card">
+        <div class="bp-img">
+          <div class="bp-img-pattern"></div>
+          <span class="bp-cat">{{ post.category }}</span>
+        </div>
+        <div class="bp-body">
+          <div class="bp-meta">{{ post.date }} &middot; {{ post.reading_time }} min read</div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.excerpt[:115] }}…</p>
+          <div class="bp-read">Read Article <span>→</span></div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="sec-cta"><a href="/blog" class="btn-ghost">View All Articles →</a></div>
   </div>
-  <p class="footer-copy">© 2024 ResumeATS · No data stored · No login required</p>
-</footer>
+</section>
+{% endif %}
 
-<!-- TEMPLATES -->
-<template id="tpl-exp">
-  <div class="rep-block">
-    <div class="rep-hd"><span class="rep-lbl">Experience #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
-    <div class="grid2">
-      <div class="field req"><label>Job Title <b>*</b></label><input name="title" type="text" placeholder="Software Engineer" /></div>
-      <div class="field req"><label>Company <b>*</b></label><input name="company" type="text" placeholder="Acme Corp" /></div>
-      <div class="field"><label>Location</label><input name="location" type="text" placeholder="Austin, TX or Remote" /></div>
-      <div class="fld-pair">
-        <div class="field"><label>Start <b>*</b></label><input name="start_date" type="text" placeholder="Jan 2022" /></div>
-        <div class="field"><label>End <b>*</b></label><input name="end_date" type="text" placeholder="Present" /></div>
+<!-- ═══════════ TESTIMONIALS ═══════════════════════════════════ -->
+<section class="testi-sec">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">Social Proof</span>
+      <h2>Real Results from <span class="grad-text">Real Job Seekers</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Rebuilt my resume with ResumeATS after 3 months of zero callbacks. Applied to 12 jobs, got 7 interviews. My old resume was scoring 38/100 — I had no idea it was so bad."</p>
+        <div class="testi-author">
+          <div class="t-avatar">AK</div>
+          <div><strong>Ahmad K.</strong><em>Software Engineer — landed at fintech</em></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"The ATS checker is brutally honest — in the best way. It told me exactly what was wrong. Fixed all 5 issues and my score went from 52 to 91. Got 3 interviews that week."</p>
+        <div class="testi-author">
+          <div class="t-avatar">SR</div>
+          <div><strong>Sara R.</strong><em>Data Analyst — now at Fortune 500</em></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Most free resume builders are trash. This one outputs a clean, professional PDF I'm actually proud to submit. No watermarks. No 'made with X' garbage. Just a real ATS resume."</p>
+        <div class="testi-author">
+          <div class="t-avatar">MJ</div>
+          <div><strong>Michael J.</strong><em>Product Manager — recently promoted</em></div>
+        </div>
       </div>
     </div>
-    <div class="field"><label>Achievement Bullets <b>*</b></label>
-      <div class="bwrap">
-        <div class="brow"><span class="bdot">•</span><input class="binp" type="text" placeholder="Led migration to microservices, reducing deploy time by 60%" /><button class="bx" onclick="delBullet(this)">✕</button></div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPAT STRIP ═══════════════════════════════════ -->
+<div class="compat-strip" data-reveal>
+  <div class="compat-inner">
+    <span class="compat-label">Tested & compatible with</span>
+    <div class="compat-list">
+      <span class="compat-chip">Workday</span>
+      <span class="compat-chip">Taleo</span>
+      <span class="compat-chip">Greenhouse</span>
+      <span class="compat-chip">iCIMS</span>
+      <span class="compat-chip">Lever</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ FAQ ═════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions <span class="grad-text">Answered</span></h2>
+    </div>
+    <div class="faq-list">
+      {% set faqs = [
+        ("What is an ATS and why does it matter?", "An Applicant Tracking System automatically screens resumes before a human sees them. 99% of Fortune 500 companies use ATS software. If your resume scores below the company's threshold, it's rejected automatically — regardless of how qualified you are."),
+        ("Is ResumeATS really 100% free?", "Yes. Both the resume builder and ATS checker are completely free — no login, no credit card, no watermarks, no limits. We earn through affiliate partnerships with tools we genuinely recommend."),
+        ("Do you store my resume data?", "Never. Your data is processed entirely in server memory and discarded immediately after your PDF is generated. Nothing is saved to any database or server."),
+        ("How accurate is the ATS score?", "Our scoring evaluates the same criteria used by real ATS platforms: text parseability, section header recognition, keyword density, quantified achievements, and structural red flags. Unlike tools that give everyone 98%, we give honest scores. A score of 70+ will pass most ATS filters."),
+        ("Which ATS systems are you tested against?", "Workday, Taleo (Oracle), Greenhouse, iCIMS, and Lever — covering approximately 80% of Fortune 500 enterprise job applications."),
+        ("Can I download unlimited resumes?", "Yes, unlimited downloads with no daily limits. Tailor your resume for each job and download as many versions as you need — free forever.")
+      ] %}
+      {% for q, a in faqs %}
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          {{ q }}
+          <span class="faq-plus">+</span>
+        </button>
+        <div class="faq-body">
+          <div class="faq-body-inner"><p>{{ a }}</p></div>
+        </div>
       </div>
-      <button class="btn-add-b" onclick="addBullet(this)">+ Add bullet</button>
+      {% endfor %}
     </div>
   </div>
-</template>
+</section>
 
-<template id="tpl-edu">
-  <div class="rep-block">
-    <div class="rep-hd"><span class="rep-lbl">Education #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
-    <div class="grid2">
-      <div class="field req"><label>Institution <b>*</b></label><input name="institution" type="text" placeholder="University of Texas" /></div>
-      <div class="field req"><label>Degree <b>*</b></label><input name="degree" type="text" placeholder="B.S. Computer Science" /></div>
-      <div class="field"><label>Start Date</label><input name="start_date" type="text" placeholder="Aug 2019" /></div>
-      <div class="field"><label>End Date</label><input name="end_date" type="text" placeholder="May 2023" /></div>
+<!-- ═══════════ CTA STRIP ══════════════════════════════════════ -->
+<section class="cta-strip">
+  <div class="cta-glow"></div>
+  <div class="cta-inner wrap" data-reveal>
+    <div class="cta-text">
+      <h2>Ready to beat the ATS?</h2>
+      <p>Join 10,000+ job seekers who built interview-ready resumes for free.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="/builder" class="btn-primary">Build My Resume →</a>
+      <a href="/checker" class="btn-secondary">Check ATS Score</a>
     </div>
   </div>
-</template>
+</section>
 
-<template id="tpl-proj">
-  <div class="rep-block">
-    <div class="rep-hd"><span class="rep-lbl">Project #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
-    <div class="grid2">
-      <div class="field req"><label>Project Name <b>*</b></label><input name="name" type="text" placeholder="OpenMetrics Dashboard" /></div>
-      <div class="field"><label>GitHub / Live URL</label><input name="link" type="url" placeholder="https://github.com/you/project" /></div>
-    </div>
-    <div class="field req"><label>Description <b>*</b></label><textarea name="description" rows="3" placeholder="Built a real-time analytics dashboard using FastAPI and React. Reached 1,200 GitHub stars within 3 months."></textarea></div>
-  </div>
-</template>
-
-<template id="tpl-cert">
-  <div class="rep-block">
-    <div class="rep-hd"><span class="rep-lbl">Certification #<em class="rn"></em></span><button class="btn-rm" onclick="delBlock(this)">✕ Remove</button></div>
-    <div class="grid2">
-      <div class="field"><label>Name</label><input name="name" type="text" placeholder="AWS Certified Solutions Architect" /></div>
-      <div class="field"><label>Verify URL</label><input name="link" type="url" placeholder="https://aws.amazon.com/certification/" /></div>
-    </div>
-  </div>
-</template>
-
-<script src="/static/js/script.js"></script>
-</body>
-</html>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/home.js"></script>{% endblock %}

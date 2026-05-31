@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Career Blog — Resume Tips, ATS Guides & Job Search Strategies | ResumeATS{% endblock %}
+{% block meta_desc %}Actionable career guides: ATS resume tips, LinkedIn optimization, interview prep, and job search strategies from industry insiders.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="ph-inner">
+    <span class="eyebrow">Career Resources</span>
+    <h1>Learn What <span class="grad-text">Gets You Hired</span></h1>
+    <p>Actionable guides from industry insiders. No fluff. Just what works in today's job market.</p>
+  </div>
+</section>
+
+<div class="wrap blog-pg" style="padding-top:40px;padding-bottom:80px">
+
+  <!-- Search + Filter -->
+  <div class="blog-controls">
+    <form action="/blog" method="get">
+      <div class="bsearch-wrap">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" name="q" value="{{ query }}" placeholder="Search articles…" class="bsearch-inp"/>
+        <button type="submit" class="bsearch-btn">Search</button>
+      </div>
+    </form>
+    <div class="cat-filters">
+      <a href="/blog" class="cat-pill {% if not active_category %}cat-active{% endif %}">All</a>
+      {% for cat in categories %}
+      <a href="/blog?category={{ cat|urlencode }}" class="cat-pill {% if active_category == cat %}cat-active{% endif %}">{{ cat }}</a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Featured posts (first page, no filter) -->
+  {% if featured and not query and not active_category and pagination.page == 1 %}
+  <div class="blog-feat-row" style="margin-bottom:36px">
+    {% for post in featured %}
+    <a href="/blog/{{ post.slug }}" class="bfeat {% if loop.first %}bfeat-lg{% endif %}">
+      <div class="bfeat-img">
+        <div class="bfeat-img-pat"></div>
+        <span class="bfeat-cat">{{ post.category }}</span>
+      </div>
+      <div class="bfeat-body">
+        <div class="bfeat-meta">{{ post.date }} · {{ post.reading_time }} min read</div>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.excerpt[:150] }}…</p>
+        <div class="bfeat-cta">Read Article <span>→</span></div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Search result info -->
+  {% if query %}<p class="search-info">{{ pagination.total }} result{{ 's' if pagination.total != 1 }} for "<strong>{{ query }}</strong>"</p>{% endif %}
+  {% if active_category %}<p class="search-info">Articles in <strong>{{ active_category }}</strong></p>{% endif %}
+
+  <!-- Posts grid -->
+  {% if posts %}
+  <div class="blog-grid">
+    {% for post in posts %}
+    <a href="/blog/{{ post.slug }}" class="blog-card">
+      <div class="blog-card-img">
+        <div class="blog-card-img-pat"></div>
+        <span class="blog-card-cat">{{ post.category }}</span>
+      </div>
+      <div class="blog-card-body">
+        <div class="blog-card-meta">{{ post.date }} · {{ post.reading_time }} min read</div>
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.excerpt[:110] }}…</p>
+        <div class="blog-footer">
+          <span class="blog-read">Read More →</span>
+          <div class="blog-tags">{% for tag in post.tags[:2] %}<span class="btag">{{ tag }}</span>{% endfor %}</div>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+  {% if pagination.pages > 1 %}
+  <div class="pagination">
+    {% if pagination.has_prev %}<a href="/blog?page={{ pagination.page-1 }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category|urlencode }}{% endif %}" class="page-btn">← Prev</a>{% endif %}
+    {% for p in range(1, pagination.pages+1) %}<a href="/blog?page={{ p }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category|urlencode }}{% endif %}" class="page-btn {% if p == pagination.page %}page-active{% endif %}">{{ p }}</a>{% endfor %}
+    {% if pagination.has_next %}<a href="/blog?page={{ pagination.page+1 }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category|urlencode }}{% endif %}" class="page-btn">Next →</a>{% endif %}
+  </div>
+  {% endif %}
+
+  {% else %}
+  <div class="blog-empty">
+    <span>📭</span>
+    <h3>No articles found</h3>
+    <p>{% if query %}No results for "{{ query }}". {% endif %}<a href="/blog" style="color:var(--blue-400)">Browse all articles →</a></p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
